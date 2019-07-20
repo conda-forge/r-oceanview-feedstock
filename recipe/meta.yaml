@@ -16,7 +16,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 2
   # no osx package for r-plot3drgl
   skip: true  # [win32 or osx]
   rpaths:
@@ -60,6 +60,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - conda-forge/r
     - cbrueffer
     - johanneskoester
     - bgruening
