@@ -1,5 +1,4 @@
 {% set version = '1.0.4' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,10 +7,9 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: OceanView_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/OceanView_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/OceanView/OceanView_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/OceanView_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/OceanView/OceanView_{{ version }}.tar.gz
   sha256: e67f6f376737e1e5cf22fdfe2769a8f674e90c886b0e43942e97d9a3e6924f1c
 
 build:
@@ -25,20 +23,24 @@ build:
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('fortran') }}        # [unix]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('fortran') }}        # [not win]
     - {{ compiler('m2w64_fortran') }}  # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
     - r-plot3d
     - r-plot3drgl
     - r-rgl
     - r-shape
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-plot3d
     - r-plot3drgl
     - r-rgl
@@ -46,7 +48,7 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('OceanView')"  # [not win]
+    - $R -e "library('OceanView')"           # [not win]
     - "\"%R%\" -e \"library('OceanView')\""  # [win]
 
 about:
@@ -55,14 +57,26 @@ about:
   summary: Functions for transforming and viewing 2-D and 3-D (oceanographic) data and model
     output.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - cbrueffer
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
+
+# Package: OceanView
+# Version: 1.0.4
+# Title: Visualisation of Oceanographic Data and Model Output
+# Author: Karline Soetaert <karline.soetaert@nioz.nl>
+# Maintainer: Karline Soetaert <karline.soetaert@nioz.nl>
+# Depends: plot3D, plot3Drgl, R (>= 3.2)
+# Imports: methods, graphics, grDevices, stats, rgl, shape
+# Description: Functions for transforming and viewing 2-D and 3-D (oceanographic) data and model output.
+# License: GPL (>= 3.0)
+# LazyData: yes
+# Repository: CRAN
+# Repository/R-Forge/Project: plot3d
+# Repository/R-Forge/Revision: 115
+# Repository/R-Forge/DateTimeStamp: 2016-01-18 12:47:55
+# Date/Publication: 2016-01-18 22:27:33
+# NeedsCompilation: yes
+# Packaged: 2016-01-18 13:05:58 UTC; rforge
