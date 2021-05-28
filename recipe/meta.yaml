@@ -59,7 +59,7 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=OceanView
-  license: GPL (>= 3.0)
+  license: GPL-3.0-or-later
   summary: Functions for transforming and viewing 2-D and 3-D (oceanographic) data and model
     output.
   license_family: GPL3
