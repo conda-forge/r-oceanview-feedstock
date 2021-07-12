@@ -1,4 +1,4 @@
-{% set version = "1.0.5" %}
+{% set version = "1.0.6" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/OceanView_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/OceanView/OceanView_{{ version }}.tar.gz
-  sha256: c16e1bed97f4ede46dc017fdd6bd7575d925b57bd2601317bd3ad2357609f885
+  sha256: 2c5165975d6c49fdc83a892cb0406584928dd44000c9774fffc00fbd2fec86f3
 
 build:
-  merge_build_host: True  # [win]
-  number: 2
+  merge_build_host: true  # [win]
+  number: 0
   # no osx package for r-plot3drgl
   skip: true  # [win32 or osx]
   rpaths:
@@ -60,10 +60,9 @@ test:
 about:
   home: https://CRAN.R-project.org/package=OceanView
   license: GPL-3.0-or-later
-  summary: Functions for transforming and viewing 2-D and 3-D (oceanographic) data and model
-    output.
+  summary: Functions for transforming and viewing 2-D and 3-D (oceanographic) data and model output.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
