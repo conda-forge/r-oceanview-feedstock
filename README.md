@@ -3,6 +3,7 @@ About r-oceanview-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-oceanview-feedstock/blob/main/LICENSE.txt)
 
+
 About r-oceanview
 -----------------
 
@@ -11,6 +12,7 @@ Home: https://CRAN.R-project.org/package=OceanView
 Package license: GPL-3.0-or-later
 
 Summary: Functions for transforming and viewing 2-D and 3-D (oceanographic) data and model output.
+
 About r-oceanview
 -----------------
 
@@ -139,7 +141,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
