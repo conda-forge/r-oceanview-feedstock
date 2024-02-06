@@ -1,4 +1,4 @@
-{% set version = "1.0.6" %}
+{% set version = "1.0.7" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/OceanView_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/OceanView/OceanView_{{ version }}.tar.gz
-  sha256: 2c5165975d6c49fdc83a892cb0406584928dd44000c9774fffc00fbd2fec86f3
+  sha256: 2af53bf28ce55b740a5612e742bf6410601e592d2f231c6041ad2abe722dc168
 
 build:
   merge_build_host: true  # [win]
-  number: 2
+  number: 0
   # no osx package for r-plot3drgl
   skip: true  # [win32 or osx]
   rpaths:
