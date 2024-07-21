@@ -1,6 +1,5 @@
 {% set version = "1.0.7" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-oceanview
@@ -13,8 +12,7 @@ source:
   sha256: 2af53bf28ce55b740a5612e742bf6410601e592d2f231c6041ad2abe722dc168
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   # no osx package for r-plot3drgl
   skip: true  # [win32 or osx]
   rpaths:
@@ -24,7 +22,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('fortran') }}        # [not win]
     - {{ compiler('m2w64_fortran') }}  # [win]
     - {{ posix }}filesystem        # [win]
@@ -46,7 +46,6 @@ requirements:
     - xorg-libxfixes  # [linux]
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-plot3d
     - r-plot3drgl
     - r-rgl
