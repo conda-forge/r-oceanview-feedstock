@@ -12,7 +12,7 @@ source:
   sha256: 75d6b0666b8a43fc6eea7870b65153d1b13c81425680234d53592a8f2f9b4ca9
 
 build:
-  number: 0
+  number: 1
   # no osx package for r-plot3drgl
   skip: true  # [win32 or osx]
   rpaths:
